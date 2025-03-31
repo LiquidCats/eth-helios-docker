@@ -13,4 +13,4 @@ RUN wget -O helios.tar.gz https://github.com/a16z/helios/releases/download/${VER
 RUN tar -xvzf helios.tar.gz -C /app
 RUN rm -rf /app/helios.tar.gz
 
-CMD ["bash", "-c", "/app/helios", "ethereum", "--rpc-bind-ip", "0.0.0.0", "--execution-rpc", "$ETH_RPC_URL", "--consensus-rpc", "$ETH_CONSENSUS_RPC"]
+CMD ["bash", "-c", "/app/helios", "ethereum", "--rpc-bind-ip", "0.0.0.0", "--execution-rpc ${ETH_RPC_URL}", "--consensus-rpc ${ETH_CONSENSUS_RPC}"]
