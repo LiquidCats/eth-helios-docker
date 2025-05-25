@@ -11,8 +11,13 @@ jobs:
   build:
     strategy:
       matrix:
-        platform: [linux/amd64, linux/arm64, linux/arm/v7]
-        arch: [linux_amd64, linux_arm64, linux_armv7]
+        include:
+          - platform: linux/amd64
+            arch: linux_amd64
+          - platform: linux/arm64
+            arch: linux_arm64
+          - platform: linux/arm/v7
+            arch: linux_armv7
     runs-on: ubuntu-latest
 
     steps:
