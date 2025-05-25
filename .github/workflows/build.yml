@@ -13,13 +13,6 @@ permissions:
 
 jobs:
   build:
-    strategy:
-      matrix:
-        include:
-          - platform: linux/amd64
-            arch: linux_amd64
-          - platform: linux/arm64
-            arch: linux_arm64
     runs-on: ubuntu-latest
 
     steps:
