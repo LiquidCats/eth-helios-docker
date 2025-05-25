@@ -24,6 +24,8 @@ RUN case "${TARGETPLATFORM}" in \
 RUN apt update -y && \
     DEBIAN_FRONTEND=noninteractive apt install -y wget ca-certificates
 
+RUN echo "https://github.com/a16z/helios/releases/download/${VERSION}/helios_${HELIOS_ARCH}.tar.gz"
+
 RUN wget -O helios.tar.gz https://github.com/a16z/helios/releases/download/${VERSION}/helios_${HELIOS_ARCH}.tar.gz
 RUN tar -xvzf helios.tar.gz -C /app
 RUN rm -rf /app/helios.tar.gz
