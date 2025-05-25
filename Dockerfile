@@ -5,7 +5,7 @@ ENV ARCH="linux_amd64"
 
 ENV ETH_RPC_URL="https://eth-mainnet.g.alchemy.com/v2/XXXXX"
 ENV ETH_CONSENSUS_RPC="https://www.lightclientdata.org"
-ENV ETH_CHECKPOINT="0xecb54630bc659fb2eceae3f3130e7306e73f374d62dec250803072d39a691e96"
+ENV ETH_CHECKPOINT="0xb7ffa93f3d9aa50ca39de19a6a8a94dc9be91a89d0848dd3526eb3ce1fcaa601"
 
 WORKDIR /app
 RUN apt update -y
