@@ -1,11 +1,11 @@
 FROM ubuntu:latest
 
-ENV VERSION="0.8.5"
+ENV VERSION="0.8.8"
 ENV ARCH="linux_amd64"
 
 ENV ETH_RPC_URL="https://eth-mainnet.g.alchemy.com/v2/XXXXX"
 ENV ETH_CONSENSUS_RPC="https://www.lightclientdata.org"
-ENV ETH_CHECKPOINT="0xff394b03461696495cdf5647357836b436264d23d00603849769747d26cc9c5a"
+ENV ETH_CHECKPOINT="0xecb54630bc659fb2eceae3f3130e7306e73f374d62dec250803072d39a691e96"
 
 WORKDIR /app
 RUN apt update -y
