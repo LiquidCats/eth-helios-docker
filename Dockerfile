@@ -17,17 +17,15 @@ ENV ETH_CHECKPOINT=$ETH_CHECKPOINT
 WORKDIR /app
 
 RUN case "${TARGETPLATFORM}" in \
-        "linux/amd64") HELIOS_ARCH=linux_amd64 ;; \
-        "linux/arm64") HELIOS_ARCH=linux_arm64 ;; \
-        *) echo "unsupported ${TARGETPLATFORM}" && exit 1 ;; \
-    esac
-RUN apt update -y && \
-    DEBIAN_FRONTEND=noninteractive apt install -y wget ca-certificates
-
-RUN echo "https://github.com/a16z/helios/releases/download/${VERSION}/helios_${HELIOS_ARCH}.tar.gz"
-
-RUN wget -O helios.tar.gz https://github.com/a16z/helios/releases/download/${VERSION}/helios_${HELIOS_ARCH}.tar.gz
-RUN tar -xvzf helios.tar.gz -C /app
-RUN rm -rf /app/helios.tar.gz
+       "linux/amd64") export ARCH=linux_amd64 ;; \
+       "linux/arm64") export ARCH=linux_arm64 ;; \
+       *) echo "Unsupported platform ${TARGETPLATFORM}" && exit 1 ;; \
+    esac && \
+    apt-get update -qq && \
+    apt-get install -y --no-install-recommends wget ca-certificates && \
+    wget -qO helios.tar.gz \
+         "https://github.com/a16z/helios/releases/download/${VERSION}/helios_${ARCH}.tar.gz" && \
+    tar -xzf helios.tar.gz -C /usr/local/bin && \
+    rm -rf /var/lib/apt/lists/* helios.tar.gz
 
 CMD ["bash", "-c", "/app/helios ethereum --rpc-bind-ip 0.0.0.0 --execution-rpc ${ETH_RPC_URL} --consensus-rpc ${ETH_CONSENSUS_RPC} --checkpoint ${ETH_CHECKPOINT}"]
