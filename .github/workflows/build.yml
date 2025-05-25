@@ -9,6 +9,10 @@ on:
 
 jobs:
   build:
+    strategy:
+      matrix:
+        platform: [linux/amd64, linux/arm64, linux/arm/v7]
+        arch: [linux_amd64, linux_arm64, linux_armv7]
     runs-on: ubuntu-latest
 
     steps:
@@ -44,6 +48,8 @@ jobs:
         if: startsWith(github.ref, 'refs/heads/main')
         uses: docker/build-push-action@v6
         with:
+          build-args: ARCH=${{ matrix.arch }}
+          platforms: ${{ matrix.platform }}
           context: .
           file: ./Dockerfile
           push: true
