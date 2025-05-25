@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM debian:stable-slim
 
 ARG VERSION="0.8.8"
 ARG ARCH="linux_amd64"

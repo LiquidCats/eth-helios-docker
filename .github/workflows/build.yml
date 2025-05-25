@@ -7,6 +7,10 @@ on:
     tags:
       - "v*"
 
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   build:
     strategy:
@@ -14,15 +18,16 @@ jobs:
         include:
           - platform: linux/amd64
             arch: linux_amd64
-          - platform: linux/arm64/v8
+          - platform: linux/arm64
             arch: linux_arm64
-          - platform: linux/arm/v7
-            arch: linux_armv7
     runs-on: ubuntu-latest
 
     steps:
       - name: Check out code
         uses: actions/checkout@v4
+
+      - uses: docker/setup-qemu-action@v3
+      - uses: docker/setup-buildx-action@v3
 
       - name: Lowercase Repository Name
         id: repository
