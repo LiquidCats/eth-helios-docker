@@ -29,4 +29,4 @@ RUN case "${TARGETPLATFORM}" in \
     tar -xzf helios.tar.gz -C /usr/local/bin && \
     rm -rf /var/lib/apt/lists/* helios.tar.gz
 
-CMD ["bash", "-c", "/app/helios ethereum --rpc-bind-ip 0.0.0.0 --execution-rpc ${ETH_RPC_URL} --consensus-rpc ${ETH_CONSENSUS_RPC} --checkpoint ${ETH_CHECKPOINT}"]
+CMD ["bash", "-c", "helios ethereum --rpc-bind-ip 0.0.0.0 --execution-rpc ${ETH_RPC_URL} --consensus-rpc ${ETH_CONSENSUS_RPC} --checkpoint ${ETH_CHECKPOINT}"]
