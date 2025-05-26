@@ -19,6 +19,7 @@ WORKDIR /app
 RUN case "${TARGETPLATFORM}" in \
        "linux/amd64") export ARCH=linux_amd64 ;; \
        "linux/arm64") export ARCH=linux_arm64 ;; \
+       "linux/arm64/v8") export ARCH=linux_arm64 ;; \
        *) echo "Unsupported platform ${TARGETPLATFORM}" && exit 1 ;; \
     esac && \
     apt-get update -qq && \
