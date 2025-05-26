@@ -1,4 +1,4 @@
-FROM debian:stable-slim
+FROM ubuntu
 
 ARG TARGETPLATFORM
 
@@ -28,5 +28,7 @@ RUN case "${TARGETPLATFORM}" in \
          "https://github.com/a16z/helios/releases/download/${VERSION}/helios_${ARCH}.tar.gz" && \
     tar -xzf helios.tar.gz -C /usr/local/bin && \
     rm -rf /var/lib/apt/lists/* helios.tar.gz
+
+EXPOSE 8545
 
 CMD ["bash", "-c", "helios ethereum --rpc-bind-ip 0.0.0.0 --execution-rpc ${ETH_RPC_URL} --consensus-rpc ${ETH_CONSENSUS_RPC} --checkpoint ${ETH_CHECKPOINT}"]
