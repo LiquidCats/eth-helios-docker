@@ -4,14 +4,13 @@ ARG TARGETPLATFORM
 
 ARG VERSION="0.8.8"
 
-ARG API_KEY
 ARG ETH_RPC_URL="https://eth-mainnet.g.alchemy.com/v2/"
 ARG ETH_CONSENSUS_RPC="https://www.lightclientdata.org"
 ARG ETH_CHECKPOINT="0x0d1439c329e16197e96307285519f3a5c3f936a0eb9be635fd337c8c2b656e4e"
 
 ENV VERSION=$VERSION
 
-ENV ETH_RPC_URL=$ETH_RPC_URL$API_KEY
+ENV ETH_RPC_URL=$ETH_RPC_URL
 ENV ETH_CONSENSUS_RPC=$ETH_CONSENSUS_RPC
 ENV ETH_CHECKPOINT=$ETH_CHECKPOINT
 
@@ -32,4 +31,4 @@ RUN case "${TARGETPLATFORM}" in \
 
 EXPOSE 8545
 
-CMD ["bash", "-c", "helios ethereum --rpc-bind-ip 0.0.0.0 --execution-rpc ${ETH_RPC_URL} --consensus-rpc ${ETH_CONSENSUS_RPC} --checkpoint ${ETH_CHECKPOINT}"]
+CMD ["bash", "-c", "helios ethereum --rpc-bind-ip 0.0.0.0 --execution-rpc ${ETH_RPC_URL}$(cat /run/secrets/api_key) --consensus-rpc ${ETH_CONSENSUS_RPC} --checkpoint ${ETH_CHECKPOINT}"]
