@@ -6,7 +6,7 @@ ARG VERSION="0.9.0"
 
 ARG ETH_RPC_URL="https://eth-mainnet.g.alchemy.com/v2/"
 ARG ETH_CONSENSUS_RPC="https://www.lightclientdata.org"
-ARG ETH_CHECKPOINT="0x4ac4e558e522d43588f743cd81f85785b12da5b704b4cd03c259ff98ff56227e"
+ARG ETH_CHECKPOINT="0x91cb79fd1e8120e7ec20ec22dbbee74acec7bba98f50dbfb8abadf7fae7c71a5"
 
 ENV VERSION=$VERSION
 
