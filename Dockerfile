@@ -18,7 +18,7 @@ RUN curl -fsSL https://raw.githubusercontent.com/a16z/helios/master/heliosup/ins
     ~/.helios/bin/heliosup
 
 # Final runtime image using distroless for better security
-FROM gcr.io/distroless/cc-debian12:latest
+FROM debian:bookworm-slim
 
 # Build arguments with defaults
 ARG ETH_RPC_URL="https://eth-mainnet.g.alchemy.com/v2/"
