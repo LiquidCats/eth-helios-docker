@@ -65,10 +65,6 @@ COPY --from=builder --chown=helios:helios /home/helios/.helios /home/helios/.hel
 # Switch to non-root user
 USER helios
 
-# Add health check
-HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
-    CMD curl -f http://localhost:8545 || exit 1
-
 # Expose port
 EXPOSE 8545
 
