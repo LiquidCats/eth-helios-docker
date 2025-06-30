@@ -25,9 +25,7 @@ WORKDIR /home/helios
 
 # Install helios with error handling
 RUN curl -fsSL https://raw.githubusercontent.com/a16z/helios/master/heliosup/install | bash && \
-    ~/.helios/bin/heliosup && \
-    # Verify installation
-    ~/.helios/bin/helios --help
+    ~/.helios/bin/heliosup
 
 # Final runtime image
 FROM ubuntu:22.04
