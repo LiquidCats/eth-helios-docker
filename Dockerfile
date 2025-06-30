@@ -28,7 +28,7 @@ RUN curl -fsSL https://raw.githubusercontent.com/a16z/helios/master/heliosup/ins
     ~/.helios/bin/heliosup
 
 # Final runtime image
-FROM ubuntu:22.04
+FROM ubuntu
 
 # Set non-interactive mode for apt
 ENV DEBIAN_FRONTEND=noninteractive
