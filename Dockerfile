@@ -74,4 +74,4 @@ EXPOSE 8545
 
 # Use proper signal handling with exec form
 ENTRYPOINT ["helios"]
-CMD ["ethereum", "--rpc-bind-ip", "0.0.0.0", "--execution-rpc", "${ETH_RPC_URL}$(cat /run/secrets/api_key 2>/dev/null || echo '')", "--consensus-rpc", "${ETH_CONSENSUS_RPC}", "--checkpoint", "${ETH_CHECKPOINT}"]
+CMD ["ethereum", "--rpc-bind-ip", "0.0.0.0", "--execution-rpc", "${ETH_RPC_URL}$(cat /run/secrets/api_key)", "--consensus-rpc", "${ETH_CONSENSUS_RPC}", "--checkpoint", "${ETH_CHECKPOINT}"]
