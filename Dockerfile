@@ -72,6 +72,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
 # Expose port
 EXPOSE 8545
 
-# Use proper signal handling with exec form
-ENTRYPOINT ["helios"]
-CMD ["ethereum", "--rpc-bind-ip", "0.0.0.0", "--execution-rpc", "${ETH_RPC_URL}$(cat /run/secrets/api_key)", "--consensus-rpc", "${ETH_CONSENSUS_RPC}", "--checkpoint", "${ETH_CHECKPOINT}"]
+CMD ["bash", "-c", "helios ethereum --rpc-bind-ip 0.0.0.0 --execution-rpc ${ETH_RPC_URL}$(cat /run/secrets/api_key) --consensus-rpc ${ETH_CONSENSUS_RPC} --checkpoint ${ETH_CHECKPOINT}"]
